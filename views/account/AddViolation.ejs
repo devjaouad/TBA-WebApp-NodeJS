@@ -1,0 +1,35 @@
+<% layout('layout') -%>
+<div class="container-fluid" ng-controller="UserProfileCtrl" ng-cloak>
+      <div class="row">
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+    <div class="col-md-9 col-md-offset-3">
+      
+            <h2>Add Violation</h2>
+            <hr>
+                        <div class="col-lg-6">
+                            <form id="login-form" action="/violation" method="post" role="form">
+                                <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                                <div class="form-group">
+                                    <input type="text" name="date" id="date" tabindex="1" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="violation" id="violation" tabindex="3" class="form-control" placeholder="violation" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="cost" id="cost" tabindex="4" class="form-control" placeholder="Cost" >
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="AddViolation" id="AddViolation" tabindex="5" class="form-control btn btn-register" value="Add">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>    

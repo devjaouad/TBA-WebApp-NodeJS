@@ -1,0 +1,116 @@
+<% layout('layout') -%>
+<div class="container-fluid">
+      <div class="row-fluid">
+        
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+        
+    <div class="col-md-9 col-md-offset-3">
+        <script>
+        function myFunction() {
+            window.print();
+        }
+         </script>
+    <div class="search-nav pull-right">
+          <form name="FindViolation" method="POST" action="/searchViolation">
+              <div class="input-group input-group-md">
+                <div class="icon-addon addon-md">
+                  <input type="text" name="violationid" placeholder="Search by id..." class="form-control" id="violationid" required autofocus>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </div>
+                <span class="input-group-btn">
+                <button type="submit" class="btn btn btn-primary alexapath-btn" type="button">Search</button>
+                </span>
+                <img onclick="myFunction()" style="width:50px; height:50px; float:right;" src="/images/print.png" />
+                
+              </div>
+        </div>
+        <br />
+        <% var costTotal = 0; %>
+        
+            <% if(Object.keys(violations).length === 0) { %>
+                     <div class="container-fluid">
+                    <center>
+                      <div class="page-header">
+                      <center> <h1>Lucky you, no violations drive safe :)</h1>
+                      <a href="/violation">Add New Violation</a></center>
+                      </div>
+                    </center>  
+                    </div>
+                    <% } else { %>
+    <div id="section-to-print"> 
+        <div class="pull-left" style="text-align: left;">
+            <%= "Driver's Name: " + user.firstname + ' ' + user.lastname %>
+            <br />
+            <%= 'Hack License: ' + user.hacklicense %>
+        </div>
+        <table class="table table-responsive">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>violation</th>
+                <th>Cost</th>
+                <!-- DON'T remove this empty tags -->
+                <th></th>
+                <th></th>
+            </tr>
+
+            <% violations.forEach(function(violation) { %>
+                <tr>
+                    <td><%= violation.id %></td>
+                    <td><%= moment(violation.date).format('MM/DD/YYYY') %></td>
+                    <td><%= violation.violation %></td>
+                    <td><%= '$' + (violation.cost).toFixed(2) %></td>
+                    <% costTotal += violation.cost; %>
+                    </form>
+                    </div>
+                    <td class="td-btn">
+                    <form name="editViolation"
+                          method="POST"
+                          class="form-horizontal"
+                          action="/goToEditViolation" novalidate>
+                            <input type="hidden"
+                                   name="_csrf"
+                                   value="<%= _csrf %>"/>
+                            <input type="hidden"
+                                   name="violationid"
+                                   id="violationid"
+                                   value="<%= violation.id %>"/>
+                            <button type="submit" class="btn edit-btn btn-sm"> Edit </button>
+                    </form>
+                    </td>
+                    <td class="td-btn">
+                        <form name="deleteViolation"
+                            method="POST"
+                             class="form-horizontal"
+                            action="/deleteViolation" novalidate>
+                       <input type="hidden"
+                              name="_csrf"
+                             value="<%= _csrf %>"/>
+                       <input type="hidden"
+                              name="violationid"
+                                id="violationid"
+                             value= "<%= violation.id %>"/>
+                      <button type="submit"
+                             class="btn btn-danger btn-sm delete-btn">
+                             delete
+                      </button>
+                      </form>
+                    </td>
+
+                </tr>
+            <% }) %>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th><%= '$' + (costTotal).toFixed(2)  %></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
+        <% } %>
+      </div>
+    </div>
+    </div>

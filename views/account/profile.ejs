@@ -1,0 +1,273 @@
+<% layout('layout') -%>
+<div class="container-fluid">
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+        </div>
+<div class="container-fluid" ng-controller="UserProfileCtrl" ng-cloak>
+        
+    <div class="col-md-9 col-md-offset-3">
+      <div class="row profile">
+        <div class="page-header">
+          <h2>Profile</h2>
+        </div>
+        <form action="/account/profile"
+              method="POST"
+              class="form-horizontal"
+              name="profileForm">
+          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+          <!-- gravatar -->
+          <div class="profile-picture">
+              <img src="<%= user.getProfilePicture() %>">
+          </div>
+          
+          <div class="form-group">
+            
+               
+                <label for="email"
+                   class="profile-label">
+                Email
+            </label>
+            <div class="profile-input-container">
+              <input type="email"
+                     name="email"
+                     id="email"
+                     value="<%= user.email %>"
+                     class="form-control" required/>
+            </div>
+          </div>
+      <div class="form-group">
+            <label for="hacklicense"
+                   class="profile-label">
+                Hack License
+            </label>
+             
+            <div class="profile-input-container">
+              <input type="text"
+                     name="hacklicense"
+                     id="hacklicense"
+                     value="<%= user.hacklicense || '' %>"
+                     maxlength="7"
+                     class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="firstname"
+                   class="profile-label">
+                First Name
+            </label>
+             
+            <div class="profile-input-container">
+              <input type="text"
+                     name="firstname"
+                     id="firstname"
+                     value="<%= user.firstname || '' %>"
+                     class="form-control"/>
+            </div>
+          </div>
+           
+
+        <div class="form-group">
+            <label for="lastname"
+                   class="profile-label">
+                Last Name
+            </label>
+            <div class="profile-input-container">
+                <input type="text"
+                       name="lastname"
+                       id="lastname"
+                       value="<%= user.lastname || '' %>"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone"
+                   class="profile-label">
+                Phone
+            </label>
+             
+            <div class="profile-input-container">
+              <input type="text"
+                     name="phone"
+                     id="phone"
+                     value="<%= user.phone || '' %>"
+                     class="form-control"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="street"
+                   class="profile-label">
+                Street
+            </label>
+            <div class="profile-input-container">
+              <input type="text"
+                     name="street"
+                     id="street"
+                     value="<%= user.street || '' %>"
+                     class="form-control"/>
+            </div>
+          </div>
+
+            <div class="form-group">
+                <label for="city"
+                       class="profile-label">
+                    City
+                </label>
+                <div class="profile-input-container">
+                    <input type="text"
+                           name="city"
+                           id="city"
+                           value="<%= user.city || '' %>"
+                           class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state"
+                       class="profile-label">
+                    State
+                </label>
+                <div class="profile-input-container">
+                    <input type="text"
+                           name="state"
+                           id="state"
+                           value="<%= user.state || '' %>"
+                           class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="zipcode"
+                     class="profile-label">
+                Zip Code
+              </label>
+              <div class="profile-input-container">
+                <input type="text"
+                       name="zipcode"
+                       id="zipcode"
+                       value="<%= user.zipcode || '' %>"
+                       class="form-control"/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="country"
+                       class="profile-label">
+                    Country
+                </label>
+                <div class="profile-input-container">
+                    <input type="text"
+                           name="country"
+                           id="state"
+                           value="<%= user.country || '' %>"
+                           class="form-control"/>
+                </div>
+            </div>
+
+          <div class="form-group">
+              <button type="submit"
+                      class="btn btn btn-primary alexapath-btn"
+                      ng-disabled="profileForm.$invalid">
+                Save
+              </button>
+          </div>
+        </form>
+
+        <!-- Change Password -->
+        <form action="/account/password"
+              method="POST"
+              class="form-horizontal"
+              novalidate
+              name="pswForm">
+          <input type="hidden"
+                 name="_csrf"
+                 value="<%= _csrf %>"/>
+          <div class="form-group">
+            <label for="password"
+                   class="profile-label">New Password</label>
+            <div class="profile-input-container">
+              <input type="password"
+                     name="password"
+                     id="password"
+                     class="form-control"
+                     ng-model="pswChange.psw"
+                     required ng-minlength="4"/>
+              <div password-strength value="pswChange.psw"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword"
+                   class="profile-label">Confirm Password</label>
+            <div class="profile-input-container">
+              <input type="password"
+                     name="confirmPassword"
+                     id="confirmPassword"
+                     class="form-control"
+                     ng-model="pswChange.psw1" required/>
+            </div>
+          </div>
+          <div class="form-group">
+              <button type="submit"
+                      class="btn btn btn-primary alexapath-btn"
+                      ng-disabled="pswForm.$invalid || pswChange.psw != pswChange.psw1">
+              Change Password
+              </button>
+          </div>
+          <div class="alert-container"
+               ng-show="pswChange.psw != pswChange.psw1 && pswChange.psw1">
+            <hr>
+            <div class="alert alert-danger">Passwords do not match!</div>
+          </div>
+        </form>
+        <!-- end of row change-password -->
+
+      </div> <!-- end of row profile -->
+
+      <!-- linked social media accounts -->
+      <div class="row linked-accounts">
+        <div class="page-header">
+          <h3>Linked Accounts</h3>
+        </div>
+        <% if(user.googleId) { %>
+          <p>
+            <a href="/account/unlink/google" class="text-danger">Unlink your Google account</a>
+          </p>
+        <% } else { %>
+          <p><a href="/auth/google">Link your Google account</a></p>
+        <% } %>
+
+        <% if(user.facebookId) { %>
+          <p>
+            <a href="/account/unlink/facebook" class="text-danger">Unlink your Facebook account</a>
+          </p>
+        <% } else { %>
+          <p><a href="/auth/facebook">Link your Facebook account</a></p>
+        <% } %>
+
+        <% if(user.linkedInId) { %>
+          <p>
+            <a href="/account/unlink/linkedIn" class="text-danger">Unlink your LinkedIn account</a>
+          </p>
+        <% } else { %>
+          <p><a href="/auth/linkedin">Link your LinkedIn account</a></p>
+        <% } %>
+      </div> <!-- end of row linked-accounts -->
+
+
+
+      <!-- delete account -->
+      <div class="row delete-account">
+        <div class="page-header">
+          <h3>Delete Account</h3>
+        </div>
+        <p>You can delete your account,
+          but keep in mind this action is irreversible.</p>
+        <button class="btn btn-danger delete-btn" ng-click="deactivateAccount()">
+          Deactivate Account
+        </button>
+      </div> <!-- end of row delete-account -->
+
+
+    </div>
+
+
+  </div>

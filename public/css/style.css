@@ -1,0 +1,469 @@
+/* Space out content a bit */
+body {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  
+  
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 10px;
+  color: #fff;
+  
+}
+/* unvisited link */
+.foot a:link {
+    color: red;
+}
+
+/* visited link */
+.footer a:visited {
+    color: #00FFFF;
+}
+
+/* mouse over link */
+.footer a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+.footer a:active {
+    color: blue;
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.content {
+  text-align: justify;
+  float: left;
+  }
+  
+  /*Heading */
+
+h1, h2, h3, h4, h5, h6 
+{ color: #362C20;
+  letter-spacing: 0em;
+  padding: 0 0 5px 0;}
+
+h1, h2, h3
+{ font: normal 170% 'century gothic', arial;
+  margin: 0 0 15px 0;
+  padding: 15px 0 5px 0;
+  color: #000;}
+
+h2
+{ font-size: 160%;
+  padding: 9px 0 5px 0;
+  color: #009FBC;}
+
+h3
+{ font-size: 140%;
+  padding: 5px 0 0 0;}
+
+h4, h6
+{ color: #009FBC;
+  padding: 0 0 5px 0;
+  font: normal 110% arial;
+  text-transform: uppercase;}
+
+h5, h6
+{ color: #888;
+  font: normal 95% arial;
+  letter-spacing: normal;
+  padding: 0 0 15px 0;}
+  
+  /*Login form */
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+	color: #029f5b;
+	font-size: 18px;
+}
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+	height: 45px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}
+.btn-login {
+	background-color: #59B2E0;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #666;
+}
+
+.btn-register {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+ 
+ /* side bar*/
+ #sidebar_container
+{ float: right;
+  width: 224px;
+  margin-left: 60px;
+  margin-bottom: 20px
+  
+      
+}
+
+.sidebar_top
+{ width: 222px;
+  height: 14px;
+  }
+
+.sidebar_base
+{ width: 222px;
+  height: 14px;
+}
+
+.sidebar_home
+{ float: right;
+  width: 222px;
+  padding: 0;
+  margin: 0 0 0 0;}
+
+.sidebar_item
+ 
+{ background: #e5e5e5;
+  border-radius: 25px;
+  width: 192px;
+  padding: 15px 15px 15px 15px;
+  text-align: left;
+}
+
+.sidebar li a.selected
+{ color: #444;} 
+
+.sidebar ul
+{ margin: 0;} 
+
+
+/*Serach box*/
+.center-block {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group .icon-addon .form-control {
+    border-radius: 0;
+}
+
+.icon-addon {
+    position: relative;
+    color: #555;
+    display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before {
+    display: table;
+    content: " ";
+}
+
+.icon-addon:after {
+    clear: both;
+}
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+
+.icon-addon.addon-lg .form-control {
+    line-height: 1.33;
+    height: 46px;
+    font-size: 18px;
+    padding: 10px 16px 10px 40px;
+}
+
+.icon-addon.addon-sm .form-control {
+    height: 30px;
+    padding: 5px 10px 5px 28px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.icon-addon.addon-lg .fa,
+.icon-addon.addon-lg .glyphicon {
+    font-size: 18px;
+    margin-left: 0;
+    left: 11px;
+    top: 4px;
+}
+
+.icon-addon.addon-md .form-control,
+.icon-addon .form-control {
+    padding-left: 30px;
+    float: left;
+    font-weight: normal;
+}
+
+.icon-addon.addon-sm .fa,
+.icon-addon.addon-sm .glyphicon {
+    margin-left: 0;
+    font-size: 12px;
+    left: 5px;
+    top: -1px
+}
+
+.icon-addon .form-control:focus + .glyphicon,
+.icon-addon:hover .glyphicon,
+.icon-addon .form-control:focus + .fa,
+.icon-addon:hover .fa {
+    color: #2580db;
+}
+
+/*index background*/
+/*
+.container{
+  background: url(/images/cab.jpg) no-repeat; background-attachment:fixed;
+  background-size: auto;
+}
+*/
+
+.btn-blue {
+  background-color: hsl(196, 91%, 3%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#06698d", endColorstr="#000a0e");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#06698d), to(#000a0e));
+  background-image: -moz-linear-gradient(top, #06698d, #000a0e);
+  background-image: -ms-linear-gradient(top, #06698d, #000a0e);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #06698d), color-stop(100%, #000a0e));
+  background-image: -webkit-linear-gradient(top, #06698d, #000a0e);
+  background-image: -o-linear-gradient(top, #06698d, #000a0e);
+  background-image: linear-gradient(#06698d, #000a0e);
+  border-color: #000a0e #000a0e hsl(196, 91%, -3.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.42);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-cyan {
+  background-color: hsl(167, 58%, 4%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6dd8c1", endColorstr="#04100d");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#6dd8c1), to(#04100d));
+  background-image: -moz-linear-gradient(top, #6dd8c1, #04100d);
+  background-image: -ms-linear-gradient(top, #6dd8c1, #04100d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6dd8c1), color-stop(100%, #04100d));
+  background-image: -webkit-linear-gradient(top, #6dd8c1, #04100d);
+  background-image: -o-linear-gradient(top, #6dd8c1, #04100d);
+  background-image: linear-gradient(#6dd8c1, #04100d);
+  border-color: #04100d #04100d hsl(167, 58%, -11%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.99);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mainMenu {
+  color: rgb(249, 249, 249);
+  
+}
+a:link{
+  text-decoration: none;
+}
+
+/*
+* Avatar img
+*/
+.navbar-nav img {
+    width: 30px;
+    height: 30px;
+    margin: -15px 15px -15px;
+}
+
+.navbar-default {
+    background-color: #ffb100;
+    border-color: #E7E7E7;
+    
+}
+	.navbar-default .navbar-nav>li>a {
+    color: #04100d;
+	}
+.profile-picture img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 40px;
+}
+
+.select-owner{
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  border-bottom: 2px solid #f7f7f7;
+  color: #C7C7CD ;
+}
+
+/*.label {*/
+    /* Other styling.. */
+/*    text-align: right;*/
+/*    clear: both;*/
+/*    float:left;*/
+/*    margin-right:15px;*/
+/*}*/
+
+tr:nth-child(even) {background: #b8d1f3}
+tr:nth-child(odd) {background: #dae5f4}
+
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #section-to-print, #section-to-print * {
+    visibility: visible;
+    
+  }
+  #section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

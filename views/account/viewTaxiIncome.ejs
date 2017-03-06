@@ -1,0 +1,130 @@
+<% layout('layout') -%>
+<div class="container-fluid">
+      <div class="row-fluid">
+        
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+        
+    <div class="col-md-9 col-md-offset-3">
+        <script>
+        function myFunction() {
+            window.print();
+        }
+</script>
+        <div class="search-nav pull-right">
+          <form name="Findincome" method="POST" action="/searchTaxiIncome">
+              <div class="input-group input-group-md">
+                <div class="icon-addon addon-md">
+                  <input type="text" name="weekid" placeholder="Search by week..." class="form-control" id="weekid" required autofocus>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </div>
+                <span class="input-group-btn">
+                <button type="submit" class="btn btn btn-primary alexapath-btn" type="button">Search</button>
+                </span>
+                <img onclick="myFunction()" style="width:50px; height:50px; float:right;" src="/images/print.png" />
+              </div>
+        </div>
+        <br />
+            <% if(Object.keys(taxis).length === 0) { %>
+                <div class="container-fluid"  ng-controller="SlidesCtrl">
+                <center>
+                      <div class="page-header">
+                      <center> <h1>You have no taxi income at this time</h1>
+                      <a href="/taxi">Add Shift Report</a></center>
+                      </div>
+                </center>  
+                </div>
+                    <% } else { %>
+    <div id="section-to-print">      
+        <div class="pull-left" style="text-align: left;">
+            <%= "Driver's Name: " + user.firstname + ' ' + user.lastname %>
+            <br />
+            <%= 'Hack License: ' + user.hacklicense %>
+        </div>
+        <table class="table table-responsive">
+            <tr>
+                <th>Date</th>
+                <th>Week</th>
+                <th>Medallion</th>
+                <th>Garage</th>
+                <th>Cash Trips</th>
+                <th>Cash Income</th>
+                <th>CC Trips</th>
+                <th>CC Income</th>
+                <th>Mta Tax</th>
+                <th>Ez-Pass</th>
+                <th>Lease Fee</th>
+                <th>Checks</th>
+                <th>Miles</th>
+                <th>Gas</th>
+                <th>Cash Tips</th>
+                <!-- DON'T remove this empty tags -->
+                <th></th>
+                <th></th>
+            </tr>
+
+            <% taxis.forEach(function(taxi) { %>
+                <tr>
+                    <td><%= moment(taxi.date).format('MM/DD/YYYY') %></td>
+                    <td><%= taxi.week %></td>
+                    <td><%= taxi.medallion %></td>
+                    <td><%= taxi.ownerId %></td>
+                    <td><%= taxi.cashtrips %></td>
+                    <td><%= '$'+ (taxi.cashincome).toFixed(2) %></td>
+                    <td><%= taxi.cctrips %></td>
+                    <td><%= '$' + (taxi.ccincome).toFixed(2) %></td>
+                    <% var mtaTax;
+                      var totalTrips = taxi.cctrips + taxi.cashtrips;
+                      mtaTax = (totalTrips * 0.8).toFixed(2) %>
+                    <td><%= mtaTax %></td>
+                    <td><%= '$' + (taxi.ezpass).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.leasefee).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.checks).toFixed(2) %></td>
+                    <td><%= (taxi.miles).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.gas).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.cashtips).toFixed(2) %></td>
+                    </div>
+                    </form>
+                    
+                    <td class="td-btn">
+                    <form name="editTaxi"
+                          method="POST"
+                          class="form-horizontal"
+                          action="/goToEditIncome" novalidate>
+                            <input type="hidden"
+                                   name="_csrf"
+                                   value="<%= _csrf %>"/>
+                            <input type="hidden"
+                                   name="taxiid"
+                                   id="taxiid"
+                                   value="<%= taxi.id %>"/>
+                            <button type="submit" class="btn edit-btn btn-sm"> Edit </button>
+                    </form>
+                    </td>
+                    <td class="td-btn">
+                        <form name="deleteIncome"
+                            method="POST"
+                             class="form-horizontal"
+                            action="/deleteIncome" novalidate>
+                       <input type="hidden"
+                              name="_csrf"
+                             value="<%= _csrf %>"/>
+                       <input type="hidden"
+                              name="taxiid"
+                                id="taxiid"
+                             value= "<%= taxi.id %>"/>
+                      <button type="submit"
+                             class="btn btn-danger btn-sm delete-btn">
+                             delete
+                      </button>
+                      </form>
+                    </td>
+
+                </tr>
+            <% }) %>
+        </table>
+        <% } %>
+      </div>
+    </div>
+    </div>

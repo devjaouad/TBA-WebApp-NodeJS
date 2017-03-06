@@ -1,0 +1,110 @@
+<% layout('layout') -%>
+<div class="container-fluid">
+      <div class="row-fluid">
+        
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+        
+    <div class="col-md-9 col-md-offset-3">
+        <script>
+        function myFunction() {
+            window.print();
+        }
+         </script>
+            <div class="search-nav pull-right">
+          <form name="Findowner" method="POST" action="/searchOwner">
+              <div class="input-group input-group-md">
+                <div class="icon-addon addon-md">
+                  <input type="text" name="ownerid" placeholder="Search by id..." class="form-control" id="ownerid" required autofocus>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </div>
+                <span class="input-group-btn">
+                <button type="submit" class="btn btn btn-primary alexapath-btn" type="button">Search</button>
+                </span>
+                <img onclick="myFunction()" style="width:50px; height:50px; float:right;" src="/images/print.png" />
+              </div>
+        </div>
+        <br />
+            <% if(Object.keys(owners).length === 0) { %>
+                     <div class="container-fluid"  ng-controller="SlidesCtrl">
+                <center>
+                      <div class="page-header">
+                      <center> <h1>You have no garages at this time</h1>
+                      <a href="/owner">Add New Garage</a></center>
+                      </div>
+                </center>  
+                </div>
+                    <% } else { %>
+    <div id="section-to-print">    
+        <div class="pull-left" style="text-align: left;">
+            <%= "Driver's Name: " + user.firstname + ' ' + user.lastname %>
+            <br />
+            <%= 'Hack License: ' + user.hacklicense %>
+        </div>
+        <table class="table table-responsive">
+            <tr>
+                <th>Id</th>
+                <th>Company</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip code</th>
+                <th>Phone</th>
+                <!-- DON'T remove this empty tags -->
+                <th></th>
+                <th></th>
+            </tr>
+
+            <% owners.forEach(function(owner) { %>
+                <tr>
+                    <td><%= owner.id %></td>
+                    <td><%= owner.company %></td>
+                    <td><%= owner.street %></td>
+                    <td><%= owner.city %></td>
+                    <td><%= owner.state %></td>
+                    <td><%= owner.zipcode %></td>
+                    <td><%= owner.phone %></td>
+                    </form>
+                    </div>
+                    <td class="td-btn">
+                    <form name="editOwner"
+                          method="POST"
+                          class="form-horizontal"
+                          action="/goToEditOwner" novalidate>
+                            <input type="hidden"
+                                   name="_csrf"
+                                   value="<%= _csrf %>"/>
+                            <input type="hidden"
+                                   name="ownerid"
+                                   id="ownerid"
+                                   value="<%= owner.id %>"/>
+                            <button type="submit" class="btn edit-btn btn-sm"> Edit </button>
+                    </form>
+                    </td>
+                    <td class="td-btn">
+                        <form name="deleteOwner"
+                            method="POST"
+                             class="form-horizontal"
+                            action="/deleteOwner" novalidate>
+                       <input type="hidden"
+                              name="_csrf"
+                             value="<%= _csrf %>"/>
+                       <input type="hidden"
+                              name="ownerid"
+                                id="ownerid"
+                             value= "<%= owner.id %>"/>
+                      <button type="submit"
+                             class="btn btn-danger btn-sm delete-btn">
+                             delete
+                      </button>
+                      </form>
+                    </td>
+
+                </tr>
+            <% }) %>
+        </table>
+        <% } %>
+      </div>
+    </div>
+    </div>

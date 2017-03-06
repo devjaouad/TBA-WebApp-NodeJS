@@ -1,0 +1,26 @@
+<% layout('layout') -%>
+<div class="container-fluid"  ng-controller="SlidesCtrl">
+    <div class="row-fluid">
+        <!-- Menu bar will go here -->
+        <% include ./partials/sidebar %>
+        <!-- End of the Menu bar -->
+
+        <div class="col-md-9 col-md-offset-3">
+        <center>
+    <svg height="100" width="100">
+        <polygon points="50,25 17,80 82,80"
+                 stroke-linejoin="round"
+                 style="fill:none;stroke:#ff0000;stroke-width:8" />
+        <text x="42" y="74" fill="#ff0000"
+              font-family="sans-serif"
+              font-weight="900"
+              font-size="42px">!</text>
+              
+              <div class="page-header">
+              <center><h4 style="color:#ff0000;">You don't have access to this page at this moment, please contact the Admin</h4></center>
+              </div>
+              </div>
+    </svg>
+</center>  
+    </div>
+</div>

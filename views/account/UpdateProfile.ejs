@@ -1,0 +1,53 @@
+<% layout('layout') -%>
+<% include ../partials/side_bar %>
+<% layout('layout') -%>
+    <% include ../partials/sidebar %>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <center><h2>Register New Owner</h2></center>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form id="login-form" action="/users/AddTaxi" method="post" role="form">
+                                <div class="form-group">
+                                    <input type="text" name="company" id="company" tabindex="1" class="form-control" placeholder="Company" autofocus>
+                                </div>
+                               <div class="form-group">
+                                    <input type="text" name="address" id="address" tabindex="1" class="form-control" placeholder="Address" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="city" id="city" tabindex="1" class="form-control" placeholder="City" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="state" id="state" tabindex="1" class="form-control" placeholder="State" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="zipCode" id="zipCode" tabindex="1" class="form-control" placeholder="Zip Code" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phoneNumber" id="phoneNumber" tabindex="1" class="form-control" placeholder="Phone Number" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="registertationDate" id="registertationDate" tabindex="1" class="form-control" value="" autofocus>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-register" value="Register">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>    

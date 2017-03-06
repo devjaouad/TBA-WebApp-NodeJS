@@ -1,0 +1,39 @@
+<% layout('layout') -%>
+<meta name="csrf-token" content="<%= _csrf %>">
+
+<div class="login-container flex-container" ng-controller="UserLoginCtrl">
+
+  <form novalidate method="POST" action="/login" name="loginForm" class="flex-content col-xs-12 col-md-6">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+    <div class="login-form">
+      <div class="login-information">
+        <div class="login-email">
+          <input type="email" name="email" id="email" placeholder="Email"
+                 autofocus class="form-control" required ng-model="login"/>
+        </div>
+        <div class="login-password">
+          <input type="password" name="password" id="password"
+                 placeholder="Password" class="form-control" required
+                 ng-model="psw"/>
+        </div>
+        <a href="/forgot" class="pull-right forgot-password">Forgot your password?</a>
+        <div class="sign-in">
+          <button type="submit" class="sign-in-btn"
+                  ng-disabled="loginForm.$invalid">
+            Sign In
+          </button>
+        </div>
+      </div>
+      <div class="login-social">
+        <p class="context-info">Sign in with...</p>
+        <a href="/auth/google" class="g-btn">Google</a>
+        <a href="/auth/facebook" class="fb-btn">Facebook</a>
+        <a href="/auth/linkedin" class="l-btn">LinkedIn</a>
+      </div>
+      <div class="row context-info">
+        <span>Don't have an account?<a href="/signup">Sign Up</a>here.</span
+      </div>
+    </div>
+  </form>
+</div>

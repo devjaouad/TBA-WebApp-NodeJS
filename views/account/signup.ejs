@@ -1,0 +1,63 @@
+<% layout('layout') -%>
+  
+  <div class="signup-container flex-container ng-scope" ng-controller="UserSignUpCtrl">
+      <div class="signup-form">
+        <div class="signup-information col-sm-offset-3 col-sm-9">
+          <!-- demo stuff here start -->
+  <form name="signupForm" method="POST" class="form-horizontal" action="/signup" novalidate>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+    <div class="col-sm-7">
+    <h2>Sign up</h2>
+    <hr>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-7">
+        <input type="email" name="email" id="email" placeholder="Email" autofocus class="form-control" ng-model="email" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-7">
+        <input type="password" name="password" id="password" placeholder="Password" class="form-control" ng-model="psw" required ng-minlength="6"/>
+        <div password-strength value="psw"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-7">
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="form-control" ng-model="psw1" required ng-minlength="6"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-7">
+       <input type="text" name="hacklicense" id="hacklicense" placeholder="Hack License" class="form-control stored" ng-model="hacklicense" maxlength="7" required/>
+      </div>
+      </div>
+    <div class="form-group">
+      <div class="col-sm-7">
+        <input type="text" name="firstname" id="firstname" placeholder="First Name" class="form-control stored" ng-model="firstname" required/>
+      </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-7">
+        <input type="text" name="lastname" id="lastname" placeholder="Last Name" class="form-control stored" ng-model="lastname" required/>
+      </div>
+      </div>
+    <div class="form-group">
+      <div class="col-sm-7">
+      <!--<div class="col-sm-offset-3 col-sm-7">-->
+        <button type="submit" class="btn btn-success" ng-disabled="signupForm.$invalid || psw != psw1">
+          <i class="fa fa-user-plus"></i> Signup
+        </button>
+
+        <div class="alert-container" ng-show="psw != psw1 && psw1">
+          <hr>
+          <div class="alert alert-danger">Passwords do not match!</div>
+        </div>
+        <div class="alert-container" ng-show="signupForm.password.$error.minlength">
+          <hr>
+          <div class="alert alert-danger">Password has to be at least 6 characters long!</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

@@ -1,0 +1,45 @@
+<% layout('layout') -%>
+    <div class="container-fluid" ng-controller="UserProfileCtrl" ng-cloak>
+      <div class="row">
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+    <div class="col-md-9 col-md-offset-3">
+        <h2>Register New Garage</h2>
+                    <hr>
+                    
+                    <div class="col-lg-6">
+                            <form action="/owner" method="post" role="form" class="register form-horizontal">
+                                <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                                <div class="form-group">
+                                    <input type="text" name="company" id="company" tabindex="1" class="form-control" placeholder="Company" autofocus>
+                                </div>
+                               <div class="form-group">
+                                    <input type="text" name="street" id="street" tabindex="2" class="form-control" placeholder="Street" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="city" id="city" tabindex="3" class="form-control" placeholder="City" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="state" id="state" tabindex="4" class="form-control" placeholder="State" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="zipcode" id="zipcode" tabindex="5" class="form-control" placeholder="Zip Code" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phone" id="phone" tabindex="6" class="form-control" placeholder="Phone Number" >
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="addowner" id="addowner" tabindex="8" class="form-control btn btn-register" value="Register">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+   

@@ -1,0 +1,58 @@
+<% layout('layout') -%>
+   <% layout('layout') -%>
+<div class="container-fluid" ng-controller="UserProfileCtrl" ng-cloak>
+      <div class="row">
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+    <div class="col-md-9 col-md-offset-3">
+      
+            <h2>Update Garage</h2>
+            <hr>
+            <form name="editOwnerForm"
+                    method="POST"
+                    class="form-horizontal"
+                    action="/UpdateOwner"
+                    novalidate>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                    <input type="hidden"
+                       name="ownerid"
+                       id="ownerid"
+                       value="<%= owner.id %>"/>
+                        <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" name="company" id="company" 
+                                    value="<%= owner.company || '' %>" tabindex="2" class="form-control" placeholder="Company" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="street" id="street"
+                                     value="<%= owner.street || '' %>" tabindex="3" class="form-control" placeholder="Street" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="city" id="city"
+                                    value="<%= owner.city || '' %>" tabindex="4" class="form-control" placeholder="City" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="state" id="state"
+                                    value="<%= owner.state || '' %>" tabindex="5" class="form-control" placeholder="State" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="zipcode" id="zipcode"
+                                    value="<%= owner.zipcode || ''  %>" tabindex="6" class="form-control" placeholder="Zip Code" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phone" id="phone"
+                                    value="<%= owner.phone || '' %>" tabindex="7" class="form-control" placeholder="Phone Number" >
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="UpdateOwner" id="UpdateOwner" tabindex="9" class="form-control btn btn-register" value="Update">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

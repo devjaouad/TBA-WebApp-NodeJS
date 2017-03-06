@@ -1,0 +1,105 @@
+<% layout('layout') -%>
+<% layout('layout') -%>
+<div class="container-fluid" ng-controller="UserProfileCtrl" ng-cloak>
+      <div class="row">
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+    <div class="col-md-9 col-md-offset-3">
+      
+            <h2>Update Shift Report</h2>
+            <hr>
+            <form name="editTaxiForm"
+                    method="POST"
+                    class="form-horizontal"
+                    action="/UpdateTaxi"
+                    novalidate>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                    <input type="hidden"
+                       name="taxiid"
+                       id="taxiid"
+                       value="<%= taxi.id %>"/>
+                        <div class="col-lg-6">
+                            
+                                <div class="form-group">
+                                    <input type="text" name="date" id="company" tabindex="1"
+                                    value="<%= moment(taxi.date).format('MM/DD/YYYY') || '' %>" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" autofocus>
+                                </div>
+                               <div class="form-group">
+                                    <input type="text" name="week" id="week" tabindex="2"
+                                    value="<%= taxi.week || '' %>" class="form-control" placeholder="Week" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="medallion" id="medallion" tabindex="3" maxlength="4"
+                                    value="<%= taxi.medallion || '' %>" class="form-control" placeholder="Medallion" >
+                                </div>
+                                <div class="form-group">
+                                <select id="company" name="company" class="form-control" tabindex="4" required="required">
+                                      <% var garage = owners; %>
+                                      <% for(var i=0; i < garage.length; i++){
+                                      var result = (garage[i].company);
+                                      //Get owners keys and put in value based on the option
+                                      var ownerId = (garage[i].id);
+                                      %>
+                                      <option selected="selected" name="orgs" value= <%= ownerId %>><%= result  %></option>
+                                      <% } %>
+                                  </select>
+                                  </div>
+                                <!--<div class="form-group">-->
+                                <!--    <input type="text" name="ownerid" id="ownerid" tabindex="4"-->
+                                <!--    value="<%= taxi.ownerId || '' %>" class="form-control" placeholder="Owner ID" >-->
+                                <!--</div>-->
+                                <div class="form-group">
+                                    <input type="text" name="cashtrips" id="cashtrips" tabindex="5"
+                                    value="<%= taxi.cashtrips || '0' %>" class="form-control" placeholder="Cash Trips" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="cashincome" id="cashincome" tabindex="6"
+                                    value="<%= taxi.cashincome || '0' %>" class="form-control" placeholder="Cash Income" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="cctrips" id="cctrips" tabindex="7"
+                                    value="<%= taxi.cctrips || '0' %>" class="form-control" placeholder="Credit Card Trips" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="ccincome" id="ccincome" tabindex="8"
+                                    value="<%= taxi.ccincome || '0' %>" class="form-control" placeholder="Credit Card Income" >
+                                </div>
+                               <div class="form-group">
+                                    <input type="text" name="ezpass" id="ezpass" tabindex="9"
+                                    value="<%= taxi.ezpass || '0' %>" class="form-control" placeholder="EZ-Pass" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="leasefee" id="leasefee" tabindex="10"
+                                    value="<%= taxi.leasefee || '0' %>" class="form-control" placeholder="Lease Fee" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="checks" id="checks" tabindex="11"
+                                    value="<%= taxi.checks || '0' %>" class="form-control" placeholder="Checks" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="miles" id="miles" tabindex="12"
+                                    value="<%= taxi.miles || '0' %>" class="form-control" placeholder="Miles" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="gas" id="gas" tabindex="13"
+                                    value="<%= taxi.gas || '0' %>" class="form-control" placeholder="Gas" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="cashtips" id="cashtips" tabindex="14"
+                                    value="<%= taxi.cashtips| '0' %>" class="form-control" placeholder="Cash Tips" >
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="UpdateTaxi" id="UpdateTaxi" tabindex="15" class="form-control btn btn-register" value="Update">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>    

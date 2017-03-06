@@ -1,0 +1,49 @@
+<% layout('layout') -%>
+<% layout('layout') -%>
+<div class="container-fluid" ng-controller="UserProfileCtrl" ng-cloak>
+      <div class="row">
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+    <div class="col-md-9 col-md-offset-3">
+      
+            <h2>Update Violation</h2>
+            <hr>
+            <form name="editViolationForm"
+                    method="POST"
+                    class="form-horizontal"
+                    action="/UpdateViolation"
+                    novalidate>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                    <input type="hidden"
+                       name="violationid"
+                       id="violationid"
+                       value="<%= violation.id %>"/>
+            
+                        <div class="col-lg-6">
+                            
+                                <div class="form-group">
+                                    <input type="text" name="date" id="company" tabindex="1"
+                                    value="<%= moment(violation.date).format('MM/DD/YYYY') || ''  %>" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="violation" id="violation" tabindex="2"
+                                    value="<%= violation.violation || ''  %>" class="form-control" placeholder="violation" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="cost" id="cost" tabindex="3"
+                                    value="<%= violation.cost || ''  %>" class="form-control" placeholder="Cost" >
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="UpdateViolation" id="UpdateViolation" tabindex="5" class="form-control btn btn-register" value="Update">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+          

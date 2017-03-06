@@ -1,0 +1,125 @@
+<% layout('layout') -%>
+<div class="container-fluid">
+      <div class="row-fluid">
+        
+        <!-- Menu bar will go here -->
+        <% include ../partials/sidebar %>
+        <!-- End of the Menu bar -->
+        
+    <div class="col-md-9 col-md-offset-3">
+        <script>
+        function myFunction() {
+            window.print();
+        }
+         </script>
+            <div class="search-nav pull-right">
+          <form name="Findincome" method="POST" action="/searchYearlyIncome">
+              <div class="input-group input-group-md">
+                <div class="icon-addon addon-md">
+                  <input type="text" name="yearid" placeholder="Search by date..." class="form-control" id="yearid" required autofocus>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </div>
+                <span class="input-group-btn">
+                <button class="btn btn btn-primary alexapath-btn" type="button">Search</button>
+                </span>
+                <img onclick="myFunction()" style="width:50px; height:50px; float:right;" src="/images/print.png" />
+              </div>
+        </div>
+        <br />
+             <% var grandTotal = 0;
+                var Trips = 0;
+                var CashIncome = 0;
+                var CCIncome = 0;
+                var MtaTax = 0;
+                var EzPass = 0;
+                var LeaseFee = 0;
+                var Miles = 0;
+                var Gas = 0;
+                var CashTips = 0;
+            %>
+            <% if(Object.keys(taxis).length === 0) { %>
+                     <div class="container-fluid"  ng-controller="SlidesCtrl">
+                <center>
+                      <div class="page-header">
+                      <center> <h1>You have no daily income at this time</h1>
+                      <a href="/taxi">Add Shift Report</a></center>
+                      </div>
+                </center>  
+                </div>
+                    <% } else { %>
+    <div id="section-to-print">
+        <div class="pull-left" style="text-align: left;">
+            <%= "Driver's Name: " + user.firstname + ' ' + user.lastname %>
+            <br />
+            <%= 'Hack License: ' + user.hacklicense %>
+        </div>                
+        <table class="table table-responsive">
+            <tr>
+                 
+                <th>Date</th>
+                <th>Trips</th>
+                <th>Cash Income</th>
+                <th>CC Income</th>
+                <th>Mta Tax</th>
+                <th>Ez-Pass</th>
+                <th>Lease Fee</th>
+                <th>Miles</th>
+                <th>Gas</th>
+                <th>Cash Tips</th>
+                <th>Daily Net Income</th>
+                
+            </tr>
+
+            <% taxis.forEach(function(taxi) { %>
+                <tr>
+                    <td><%= moment(taxi.date).format('MM/DD/YYYY') %></td>
+                    <% var totalTrips = Number(taxi.cashtrips) + Number(taxi.cctrips) %>
+                    <td><%= totalTrips %></td>
+                    <td><%= '$' + (taxi.cashincome).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.ccincome).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.mtatax).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.ezpass).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.leasefee).toFixed(2) %></td>
+                    <td><%= (taxi.miles).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.gas).toFixed(2) %></td>
+                    <td><%= '$' + (taxi.cashtips).toFixed(2) %></td>
+                    <% credit = Number(taxi.cashincome) + Number(taxi.ccincome) + Number(taxi.cashtips);
+                       expenses = Number(taxi.mtatax) + Number(taxi.ezpass) + Number(taxi.leasefee) + Number(taxi.gas);
+                       yearlyIncome = Number(credit) - Number(expenses);
+                    %>
+                    <td><%= '$' + (yearlyIncome).toFixed(2) %></td>
+                        <% grandTotal += yearlyIncome;
+                           Trips += totalTrips;
+                           CashIncome += taxi.cashincome ;
+                           CCIncome += taxi.ccincome;
+                           MtaTax += taxi.mtatax;
+                           EzPass += taxi.ezpass;
+                           LeaseFee += taxi.leasefee;
+                           Miles += taxi.miles;
+                           Gas += taxi.gas;
+                           CashTips += taxi.cashtips;
+                        
+                        %>
+                        
+                  </form>
+                </tr>
+            <% }) %>
+            <tr>
+                    <th>Total: </th>
+                    <th><%= Trips %></th>
+                    <th><%= '$' + (CashIncome).toFixed(2) %></th>
+                    <th><%= '$' + (CCIncome).toFixed(2) %></th>
+                    <th><%= '$' + (MtaTax).toFixed(2) %></th>
+                    <th><%= '$' + (EzPass).toFixed(2) %></th>
+                    <th><%= '$' + (LeaseFee).toFixed(2) %></th>
+                    <th><%= (Miles).toFixed(2) %></th>
+                    <th><%= '$' + (Gas).toFixed(2) %></th>
+                    <th><%= '$' + (CashTips).toFixed(2) %></th>
+                    <th><%= '$' + (grandTotal).toFixed(2) %></th>
+                </tr>
+        </table>
+        <% } %>
+        </div>
+      </div>
+    </div>
+    </div>

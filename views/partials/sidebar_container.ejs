@@ -1,0 +1,43 @@
+<div id="sidebar_container"> 
+        <div class="sidebar_home">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item">
+            <!-- insert your sidebar items here -->
+            <h3>News</h3>            
+            <p>Coming soon ... <br />
+              </p>
+          </div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar_home">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item">
+            <h3>Quick Links</h3>
+            <ul>
+             <% if(user) { %>
+              <li><a href="/TaxiIncome">Dashboard</a></li> 
+              <% }  %>
+               <% if(!user) { %>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Sign Up</a></li>
+              <% } %>
+              <li><a href="/contact">Contact</a></li> 
+              <li><a href="/about">About</a></li>               
+            </ul>
+          </div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar_home">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item pull-left">
+            <h3>Search the website:</h3>
+           <form method="" action="#" id="search_form">
+              <p>
+                <input class="search" type="text" name="search_field" placeholder="Enter keywords....." />
+                <input name="search" type="image" style="border: 0;float:right; margin: 0 0 -9px 5px;" src="/images/search.png" alt="Search" title="Search" />
+              </p>
+            </form>
+          </div>
+          <div class="sidebar_base"></div>
+        </div>
+</div>
