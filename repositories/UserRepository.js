@@ -622,7 +622,7 @@ repo.getWeeklyIncome = function(userid) {
 };
 
 /**
- * Display daily shift repot with calculating
+ * Display daily shift reprot with calculating
  * All data, and calculate the user net income
  * for each report, after taking out all expenses
  */
